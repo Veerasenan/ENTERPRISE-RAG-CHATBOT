@@ -17,4 +17,6 @@ def get_chat_llm(streaming: bool = False) -> BaseChatModel:
         google_api_key=settings.GOOGLE_API_KEY,
         temperature=0.2,
         streaming=streaming,
+        max_retries=4,          # auto-retry transient 503 "high demand" errors
+        timeout=60,
     )

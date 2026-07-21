@@ -37,6 +37,25 @@ def _format_context(docs: List[Document]) -> str:
         parts.append(f"[Chunk {i} | source: {source} | page: {page}]\n{doc.page_content}")
     return "\n\n".join(parts)
 
+def _extract_text(content) -> str:
+    """
+    Normalize LangChain message content into plain text.
+    Newer Gemini models sometimes return `content` as a list of content
+    blocks (e.g. [{'type': 'text', 'text': '...', 'index': 0}]) instead of a
+    plain string. This handles both shapes safely.
+    """
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for block in content:
+            if isinstance(block, str):
+                parts.append(block)
+            elif isinstance(block, dict):
+                parts.append(block.get("text", ""))
+        return "".join(parts)
+    return str(content) if content else ""
+
 
 class RAGPipeline:
     def __init__(self) -> None:
@@ -77,7 +96,7 @@ class RAGPipeline:
 
         llm = get_chat_llm(streaming=False)
         response = llm.invoke([HumanMessage(content=prompt)])
-        answer_text = response.content
+        answer_text = _extract_text(response.content)
 
         _CHAT_HISTORY[history_key].append(("user", question))
         _CHAT_HISTORY[history_key].append(("assistant", answer_text))
@@ -113,7 +132,7 @@ class RAGPipeline:
         llm = get_chat_llm(streaming=True)
         full_answer = ""
         async for chunk in llm.astream([HumanMessage(content=prompt)]):
-            token = chunk.content or ""
+            token = _extract_text(chunk.content)
             full_answer += token
             if token:
                 yield token

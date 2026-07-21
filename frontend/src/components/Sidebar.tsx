@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import RoleBadge from "./RoleBadge";
+import { PRODUCT_NAME, PRODUCT_INITIALS, PRODUCT_TAGLINE } from "../config/product";
 
 export default function Sidebar() {
   const { user, logout } = useAuth();
@@ -16,10 +17,10 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="brand-mark">EP</div>
+        <div className="brand-mark">{PRODUCT_INITIALS}</div>
         <div>
-          <div className="brand-name">Policy Assistant</div>
-          <div className="brand-sub">Enterprise RAG</div>
+          <div className="brand-name">{PRODUCT_NAME}</div>
+          <div className="brand-sub">{PRODUCT_TAGLINE}</div>
         </div>
       </div>
 

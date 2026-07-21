@@ -221,29 +221,30 @@ input, textarea {
 
 .login-card {
   width: 100%;
-  max-width: 380px;
+  max-width: 520px;
   background: white;
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 32px 28px;
+  padding: 40px 36px;
 }
 
 .login-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--accent-600), var(--accent-700));
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 700;
-  margin-bottom: 18px;
+  font-size: 20px;
+  margin-bottom: 16px;
 }
 
-.login-title { font-size: 19px; font-weight: 700; margin: 0 0 4px; color: var(--gray-900); }
-.login-subtitle { font-size: 13.5px; color: var(--gray-500); margin: 0 0 24px; }
+.login-title { font-size: 20px; font-weight: 700; margin: 0 0 6px; color: var(--gray-900); }
+.login-subtitle { font-size: 14px; color: var(--gray-600); margin: 0 0 22px; }
 
 .form-group { margin-bottom: 14px; }
 .form-label { display: block; font-size: 13px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }

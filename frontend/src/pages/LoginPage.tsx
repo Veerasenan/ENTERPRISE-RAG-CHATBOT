@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { PRODUCT_NAME, PRODUCT_INITIALS } from "../config/product";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -27,15 +28,15 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <div className="login-logo">EP</div>
-        <h1 className="login-title">Sign in</h1>
-        <p className="login-subtitle">Enterprise Policy Assistant — role-based access</p>
+        <div className="login-logo">{PRODUCT_INITIALS}</div>
+        <h1 className="login-title">{PRODUCT_NAME}</h1>
+        <p className="login-subtitle">Welcome — secure company access.</p>
 
         {error && <div className="form-error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Work email</label>
+            <label className="form-label">Email</label>
             <input
               className="form-input"
               type="email"
@@ -57,14 +58,10 @@ export default function LoginPage() {
             />
           </div>
           <button className="btn-primary" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Signing in..." : "Sign in"}
+            {isSubmitting ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        <div className="login-hint">
-          Local test accounts (password <code>test1234</code>):<br />
-          <code>employee@company.com</code> · <code>manager@company.com</code> · <code>hr@company.com</code>
-        </div>
       </div>
     </div>
   );
