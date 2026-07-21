@@ -1,0 +1,58 @@
+# ==============================
+# Python
+# ==============================
+backend/env/
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ==============================
+# Environment
+# ==============================
+backend/.env
+
+# ==============================
+# ChromaDB
+# ==============================
+backend/data/chroma_db/*
+!backend/data/chroma_db/.gitkeep
+
+# ==============================
+# Uploaded PDFs
+# ==============================
+backend/data/uploaded_pdfs/*
+!backend/data/uploaded_pdfs/.gitkeep
+
+# ==============================
+# Logs
+# ==============================
+backend/logs/
+*.log
+
+# ==============================
+# Testing
+# ==============================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# ==============================
+# VS Code
+# ==============================
+.vscode/
+
+# ==============================
+# Frontend
+# ==============================
+frontend/node_modules/
+frontend/dist/
+
+# ==============================
+# OS Files
+# ==============================
+.DS_Store
+Thumbs.db
